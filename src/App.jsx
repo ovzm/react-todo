@@ -37,11 +37,11 @@ function App() {
       <div className="form-todo">
         <h2>Insira a sua próxima tarefa</h2>
         <form onSubmit={handleSubmit}>
-          <div id="form-control">
+          <div className="form-control">
             <label htmlFor="title">O que você vai fazer?</label>
             <input type="text" name='title' placeholder='Título da tarefa' onChange={(e) => setTitle(e.target.value)} value={title || ''} required/>
           </div>
-          <div id="form-control">
+          <div className="form-control">
             <label htmlFor="time">Duração:</label>
             <input type="text" name='time' placeholder='Tempo estimado (em horas)' onChange={(e) => setTime(e.target.value)} value={time || ''} required/>
           </div>
