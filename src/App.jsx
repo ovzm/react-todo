@@ -11,6 +11,25 @@ function App() {
   const [todos, setTodos] = useState([])
   const [loading, setLoading] = useState(false)
 
+  // Load todos on page load
+  useEffect(() => {
+
+    const loadData = async() => {
+      setLoading(true)
+
+      const res = await fetch(API + "/todos")
+        .then((res) => res.json())
+        .then((data) => data)
+        .catch((err) => console.log(err));
+
+        setLoading(false);
+
+        setTodos(res);
+    };
+
+    loadData();
+  }, [])
+
   const handleSubmit = async (e) => {
     // o e permite que ao enviar ele n carrega a pag sozinho
     e.preventDefault();
@@ -31,8 +50,14 @@ function App() {
       }
     })
 
+    setTodos((prevState) => [...prevState, todo])
+
     setTitle("");
     setTime("");
+  }
+
+  if(loading) {
+    return <p>Carregando...</p>
   }
 
   return (
@@ -57,6 +82,15 @@ function App() {
       <div className="list-todo">
         <p>Lista de tarefas:</p>
         {todos.length === 0 && <p>Não há tarefas!</p>}
+        {todos.map((todo) => (
+          <div className="todo" key={todo.id}>
+            <p>{todo.title}</p>
+            <p>Duração: {todo.time}</p>
+            <div className="actions">
+              
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
