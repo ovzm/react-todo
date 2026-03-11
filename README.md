@@ -99,26 +99,10 @@ http://localhost:5173
 
 # 📡 Executando a API
 
-Para simular a API, você pode utilizar **json-server**.
-
-Instale globalmente:
+Para simular a API, execute a API:
 
 ```bash
-npm install -g json-server
-```
-
-Crie um arquivo `db.json`:
-
-```json
-{
-  "todos": []
-}
-```
-
-Execute a API:
-
-```bash
-json-server --watch db.json --port 5000
+npm run server      
 ```
 
 ---
